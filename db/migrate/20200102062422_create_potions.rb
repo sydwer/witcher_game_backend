@@ -3,7 +3,7 @@ class CreatePotions < ActiveRecord::Migration[6.0]
     create_table :potions do |t|
       t.string :name
       t.string :img_src
-      t.text :description
+      t.text :effect
       t.timestamps
     end
   end

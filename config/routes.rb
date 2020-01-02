@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :weaknesses
+  resources :monsters
   resources :time_of_days
   resources :places
   resources :signs
