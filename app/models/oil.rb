@@ -1,3 +1,3 @@
 class Oil < ApplicationRecord
-    has_many :weaknesses
+    has_many :monsters
 end

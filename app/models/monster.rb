@@ -1,6 +1,7 @@
 class Monster < ApplicationRecord
     belongs_to :place
-    has_many :weaknesses
-    has_many :oils, through: :weaknesses
-    has_many :signs, through: :weaknesses
+    belongs_to :oil
+    belongs_to :sign
+    belongs_to :time_of_day
+    
 end

@@ -1,3 +1,5 @@
+Weakness.destroy_all
+Monster.destroy_all
 Oil.destroy_all
 Potion.destroy_all
 Sign.destroy_all
@@ -87,15 +89,15 @@ axil = Sign.create(
     damage: 0
 )
 
-TimeOfDay.create(
+morning = TimeOfDay.create(
     name: "Morning",
     img_src: "http://i.imgur.com/3wLvI88.jpg",
 )
-TimeOfDay.create(
+day = TimeOfDay.create(
     name: "Daytime",
     img_src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_H8NF7MZSgFde_Yn0cJ1tpbQqS-PiMTKtgqBsi6YXxJvYtmJd&s",
 )
-TimeOfDay.create(
+evening = TimeOfDay.create(
 name: "Evening",
 img_src: "https://cdn.wccftech.com/wp-content/uploads/2015/05/Witcher-DLC-1.jpg",
 )
@@ -112,4 +114,35 @@ fables = Place.create(
 crows_perch = Place.create(
     name:"Crow's Perch",
     img_src: "https://vignette.wikia.nocookie.net/witcher/images/e/ee/Crows_Perch.jpg/revision/latest?cb=20160212171735",
+)
+
+
+# Monster.create(
+#     name: "Big Bad Wolf",
+#     img_src: "https://vignette.wikia.nocookie.net/witcher/images/d/db/Tw3_journal_bigbadwolf.png/revision/latest?cb=20160605085157",
+#     description: "The Big Bad Wolf who lived in the Land of a Thousand Fables was, like the other denizens of that strange sphere, created by Artorius Vigo based on a figure from folk tales. Once he served as a playmate to the duke's daughters, acting out scenes with a certain red-hooded girl and her grandmother, but as the fable land slowly degenerated, so did he.",
+#     reward_amount: 100,
+#     dodge_chance:10,
+#     attack_pwr: 5,
+#     accuracy_rtg: 6,
+#     oil_id: beast,
+#     place_id:fables,
+# )
+botchling = Monster.create(
+    name: "Botchling",
+    img_src: "https://vignette.wikia.nocookie.net/witcher/images/f/f3/Gwent_cardart_northern_botchling.jpg/revision/latest?cb=20180501100520",
+    description: "Botchlings are perhaps the most repulsive creatures a witcher will ever have the displeasure of meeting. Born of dead, unwanted babies discarded without a proper burial, their appearance is that of a partially-decayed fetus, their unformed flesh twisted with hate, fear and malice. These hideous creatures feed on the blood of pregnant women, driven by a mad hunger that most often leads to their victim's death.",
+    reward_amount: 100,
+    health_points: 100,
+    dodge_chance:10,
+    attack_pwr: 5,
+    accuracy_rtg: 6,
+    place_id:crows_perch.id,
+    time_of_day_id: night.id
+)
+
+Weakness.create(
+    monster_id:botchling.id,
+    oil_id: cursed.id,
+    sign_id: axil.id
 )

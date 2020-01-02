@@ -1,3 +1,3 @@
 class Sign < ApplicationRecord
-    has_many :weaknesses
+    has_many :monsters
 end
