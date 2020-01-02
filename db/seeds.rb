@@ -1,3 +1,4 @@
+Monster.destroy_all
 Oil.destroy_all
 Potion.destroy_all
 Sign.destroy_all
@@ -23,6 +24,14 @@ necrophage = Oil.create(
 vampire = Oil.create(
     name:"Vampire Oil",
     img_src: "https://vignette.wikia.nocookie.net/witcher/images/a/ac/Tw3_oil_vampire_enhanced.png/revision/latest?cb=20170425025930"
+)
+draconid = Oil.create(
+    name:"Draconid Oil",
+    img_src: "https://vignette.wikia.nocookie.net/witcher/images/6/64/Tw3_oil_draconid_enhanced.png/revision/latest?cb=20170425025347"
+)
+hybrid = Oil.create(
+    name:"Hybrid Oil",
+    img_src: "https://vignette.wikia.nocookie.net/witcher/images/8/89/Tw3_oil_hybrid_enhanced.png/revision/latest?cb=20170425025524"
 )
 
 Potion.create(
@@ -87,23 +96,22 @@ axil = Sign.create(
     damage: 0
 )
 
-TimeOfDay.create(
+morning = TimeOfDay.create(
     name: "Morning",
     img_src: "http://i.imgur.com/3wLvI88.jpg",
 )
-TimeOfDay.create(
+day = TimeOfDay.create(
     name: "Daytime",
     img_src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_H8NF7MZSgFde_Yn0cJ1tpbQqS-PiMTKtgqBsi6YXxJvYtmJd&s",
 )
-TimeOfDay.create(
-name: "Evening",
-img_src: "https://cdn.wccftech.com/wp-content/uploads/2015/05/Witcher-DLC-1.jpg",
+evening = TimeOfDay.create(
+    name: "Evening",
+    img_src: "https://cdn.wccftech.com/wp-content/uploads/2015/05/Witcher-DLC-1.jpg",
 )
 night = TimeOfDay.create(
     name: "The Dead of Night",
     img_src: "http://i.imgur.com/J1UPgeb.jpg",
 )
-
 
 fables = Place.create(
     name:"Land of a Thousand Fables",
@@ -113,3 +121,100 @@ crows_perch = Place.create(
     name:"Crow's Perch",
     img_src: "https://vignette.wikia.nocookie.net/witcher/images/e/ee/Crows_Perch.jpg/revision/latest?cb=20160212171735",
 )
+sewers = Place.create(
+    name: "Vizima Sewers",
+    img_src: "https://vignette.wikia.nocookie.net/witcher/images/4/4a/Loading_Sewers_day.png/revision/latest?cb=20170511225814"
+)
+velen = Place.create(
+    name: "Velen",
+    img_src: "https://vignette.wikia.nocookie.net/witcher/images/0/09/NoMansLandPanorama.jpg/revision/latest?cb=20150410174306"
+)
+kaer = Place.create(
+    name: "Kaer Morhen",
+    img_src: "https://vignette.wikia.nocookie.net/witcher/images/2/23/Loading_KM_gate_day.png/revision/latest?cb=20141116175523"
+)
+#need to get over 3 to dodge, dodge is the "pool" of dodge points beast has-the higher the more likely to dodge, accuracy is the "player's" dodge pool when facing the beast
+wolf = Monster.create(
+    name: "Big Bad Wolf",
+    img_src: "https://vignette.wikia.nocookie.net/witcher/images/d/db/Tw3_journal_bigbadwolf.png/revision/latest?cb=20160605085157",
+    description: "The Big Bad Wolf who lived in the Land of a Thousand Fables was, like the other denizens of that strange sphere, created by Artorius Vigo based on a figure from folk tales. Once he served as a playmate to the duke's daughters, acting out scenes with a certain red-hooded girl and her grandmother, but as the fable land slowly degenerated, so did he.",
+    reward_amount: 50,
+    dodge_chance:10,
+    attack_pwr: 5,
+    accuracy_rtg: 6,
+    oil_id: beast.id,
+    sign_id: igni.id,
+    place_id:fables.id,
+    time_of_day_id: day.id,
+)
+botchling = Monster.create(
+    name: "Botchling",
+    img_src: "https://vignette.wikia.nocookie.net/witcher/images/f/f3/Gwent_cardart_northern_botchling.jpg/revision/latest?cb=20180501100520",
+    description: "Botchlings are perhaps the most repulsive creatures a witcher will ever have the displeasure of meeting. Born of dead, unwanted babies discarded without a proper burial, their appearance is that of a partially-decayed fetus, their unformed flesh twisted with hate, fear and malice. These hideous creatures feed on the blood of pregnant women, driven by a mad hunger that most often leads to their victim's death.",
+    reward_amount: 40,
+    health_points: 25,
+    dodge_chance: 3,
+    attack_pwr: 3,
+    accuracy_rtg: 12,
+    oil_id: cursed.id,
+    sign_id: axil.id,
+    place_id:crows_perch.id,
+    time_of_day_id: night.id,
+)
+cockatrice = Monster.create(
+    name: "Cockatrice",
+    img_src: "https://vignette.wikia.nocookie.net/witcher/images/0/06/Gwent_cardart_monsters_cockatrice.jpg/revision/latest?cb=20190922191129",
+    description: "Cockatrices are born of eggs laid by roosters consorting with other roosters. The egg must be incubated for forty-four days by a toad, which is devoured by the little beast as soon as it hatches. A cockatrice hates everything that lives so fiercely that its glance turns the living to stone. Only a bold adventurer with a mirror can deflect its deadly gaze and defeat the cockatrice.",
+    reward_amount: 75,
+    health_points: 70,
+    dodge_chance: 10,
+    attack_pwr: 8,
+    accuracy_rtg: 9,
+    oil_id: draconid.id,
+    sign_id: igni.id,
+    place_id: sewers.id,
+    time_of_day_id: evening.id,
+)
+griffin = Monster.create(
+    name: "Griffin",
+    img_src: "https://vignette.wikia.nocookie.net/witcher/images/3/3e/Gwent_cardart_monsters_griffin.jpg/revision/latest?cb=20180529211200",
+    description: "The griffin looks like a combination of a ferocious cat and a giant bird. It usually inhabits primeval highlands and builds its nests on unreachable mountain summits. The griffin preys on large mammals and, being a highly territorial creature, fiercely defends its hunting grounds.",
+    reward_amount: 100,
+    health_points: 80,
+    dodge_chance: 8,
+    attack_pwr: 10,
+    accuracy_rtg: 12,
+    oil_id: hybrid.id,
+    sign_id: aard.id,
+    place_id: velen.id,
+    time_of_day_id: day.id,
+)
+foglet = Monster.create(
+    name: "Foglet",
+    img_src: "https://vignette.wikia.nocookie.net/witcher/images/c/c6/Gwent_cardart_monsters_foglet.jpg/revision/latest?cb=20180608203520",
+    description: "Foglets can appear wherever thick fog arises: swamplands, mountain passes or the shores of rivers and lakes. If no fog is forthcoming, they can create or summon it themselves. By manipulating fog they can separate travelers from each other, hide trails and deafen noise. ",
+    reward_amount: 45,
+    health_points: 40,
+    dodge_chance: 15,
+    attack_pwr: 5,
+    accuracy_rtg: 8,
+    oil_id: necrophage.id,
+    sign_id: quen.id,
+    place_id: kaer.id,
+    time_of_day_id: evening.id,
+)
+#  = Monster.create(
+#     name: "",
+#     img_src: "",
+#     description: "",
+#     reward_amount: ,
+#     health_points: ,
+#     dodge_chance:,
+#     attack_pwr: ,
+#     accuracy_rtg: ,
+#     oil_id: ,
+#     sign_id: ,
+#     place_id: ,
+#     time_of_day_id: ,
+# )
+

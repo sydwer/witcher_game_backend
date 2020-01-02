@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_02_064334) do
+ActiveRecord::Schema.define(version: 2020_01_02_063317) do
 
   create_table "monsters", force: :cascade do |t|
     t.string "name"
@@ -21,10 +21,16 @@ ActiveRecord::Schema.define(version: 2020_01_02_064334) do
     t.integer "dodge_chance"
     t.integer "attack_pwr"
     t.integer "accuracy_rtg"
+    t.integer "oil_id"
+    t.integer "sign_id"
     t.integer "place_id"
+    t.integer "time_of_day_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["oil_id"], name: "index_monsters_on_oil_id"
     t.index ["place_id"], name: "index_monsters_on_place_id"
+    t.index ["sign_id"], name: "index_monsters_on_sign_id"
+    t.index ["time_of_day_id"], name: "index_monsters_on_time_of_day_id"
   end
 
   create_table "oils", force: :cascade do |t|
@@ -64,19 +70,8 @@ ActiveRecord::Schema.define(version: 2020_01_02_064334) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "weaknesses", force: :cascade do |t|
-    t.integer "monster_id"
-    t.integer "oil_id"
-    t.integer "sign_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["monster_id"], name: "index_weaknesses_on_monster_id"
-    t.index ["oil_id"], name: "index_weaknesses_on_oil_id"
-    t.index ["sign_id"], name: "index_weaknesses_on_sign_id"
-  end
-
+  add_foreign_key "monsters", "oils"
   add_foreign_key "monsters", "places"
-  add_foreign_key "weaknesses", "monsters"
-  add_foreign_key "weaknesses", "oils"
-  add_foreign_key "weaknesses", "signs"
+  add_foreign_key "monsters", "signs"
+  add_foreign_key "monsters", "time_of_days"
 end

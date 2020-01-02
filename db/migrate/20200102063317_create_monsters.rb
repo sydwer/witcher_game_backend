@@ -9,7 +9,10 @@ class CreateMonsters < ActiveRecord::Migration[6.0]
       t.integer :dodge_chance
       t.integer :attack_pwr
       t.integer :accuracy_rtg
+      t.references :oil, foreign_key: true
+      t.references :sign, foreign_key: true
       t.references :place, foreign_key: true
+      t.references :time_of_day, foreign_key: true
       t.timestamps
     end
   end
