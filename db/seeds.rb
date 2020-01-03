@@ -114,7 +114,7 @@ night = TimeOfDay.create(
 )
 
 fables = Place.create(
-    name:"Land of a Thousand Fables",
+    name:"The Land of a Thousand Fables",
     img_src: "https://vignette.wikia.nocookie.net/witcher/images/2/2e/BaW_land_of_a_thousand_fables.jpg/revision/latest/scale-to-width-down/700?cb=20180603191720",
 )
 crows_perch = Place.create(
@@ -136,9 +136,10 @@ kaer = Place.create(
 #need to get over 3 to dodge, dodge is the "pool" of dodge points beast has-the higher the more likely to dodge, accuracy is the "player's" dodge pool when facing the beast
 wolf = Monster.create(
     name: "Big Bad Wolf",
-    img_src: "https://vignette.wikia.nocookie.net/witcher/images/d/db/Tw3_journal_bigbadwolf.png/revision/latest?cb=20160605085157",
+    img_src: "https://vignette.wikia.nocookie.net/witcher/images/e/ec/Gwent_cardart_monsters_werewolf.png/revision/latest?cb=20190812151752",
     description: "The Big Bad Wolf who lived in the Land of a Thousand Fables was, like the other denizens of that strange sphere, created by Artorius Vigo based on a figure from folk tales. Once he served as a playmate to the duke's daughters, acting out scenes with a certain red-hooded girl and her grandmother, but as the fable land slowly degenerated, so did he.",
     reward_amount: 50,
+    health_points: 60,
     dodge_chance:10,
     attack_pwr: 5,
     accuracy_rtg: 6,
