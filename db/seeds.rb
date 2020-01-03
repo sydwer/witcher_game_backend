@@ -114,7 +114,7 @@ night = TimeOfDay.create(
 )
 
 fables = Place.create(
-    name:"Land of a Thousand Fables",
+    name:"The Land of a Thousand Fables",
     img_src: "https://vignette.wikia.nocookie.net/witcher/images/2/2e/BaW_land_of_a_thousand_fables.jpg/revision/latest/scale-to-width-down/700?cb=20180603191720",
 )
 crows_perch = Place.create(
